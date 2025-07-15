@@ -41,4 +41,10 @@ bot.command('stop', (ctx) => {
 bot.on('text', (ctx) => {
   const id = ctx.from.id;
   const other = pairs[id];
-  if (!other) return ctx.reply('برای شروع چت، /start بزن.
+  if (!other) return ctx.reply('برای شروع چت، /start بزن.');
+  bot.telegram.sendMessage(other, ctx.message.text);
+});
+
+bot.launch().then(() => console.log('Bot started...')).catch((err) => {
+  console.error('Launch error:', err);
+});
